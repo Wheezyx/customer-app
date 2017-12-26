@@ -1,5 +1,7 @@
 package pl.wedel.model;
 
+import com.sun.istack.internal.Nullable;
+
 import javax.persistence.*;
 import java.io.Serializable;
 

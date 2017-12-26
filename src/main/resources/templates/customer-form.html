@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Time tracker</title>
+
+    <link href="../static/css/style.css"
+          th:href="@{/css/style.css}"
+          rel="stylesheet" type="text/css"  />
+    <link href="../static/css/add-customer-style.css"
+          th:href="@{/css/add-customer-style.css}"
+          rel="stylesheet" type="text/css"  />
+</head>
+<body>
+<h1>Time registration</h1>
+
+<div id="wrapper">
+    <div id="header">
+        <h2> Customer Relationship Manager</h2>
+    </div>
+</div>
+
+<form action="#" method="post" th:action="@{saveCustomer}" th:object="${customer}">
+    <p>First name: <input type="text" th:field="*{firstName}" required="required"/></p>
+    <p>Last name: <input type="text" th:field="*{lastName}" required="required"/></p>
+    <p>Email: <input type="email" th:field="*{email}" required="required"/></p>
+    <input type="submit" value="Save" />
+</form>
+<a th:href="@{/customer/list}">Back</a>
+</body>
+</html>

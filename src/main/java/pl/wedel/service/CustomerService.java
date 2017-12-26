@@ -22,4 +22,9 @@ public class CustomerService {
     {
         return repository.findAll();
     }
+
+    public void saveCustomer(Customer customer)
+    {
+        repository.save(customer);
+    }
 }

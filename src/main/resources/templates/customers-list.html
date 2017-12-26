@@ -18,6 +18,10 @@
 
     <div id="content">
 
+        <input type="button" value="addCustomer"
+               onclick="window.location.href='addCustomer'"
+               class="add-button"/>
+
         <!-- output here-->
         <div th:if="not ${customers.isEmpty()}">
             <table>
