@@ -23,6 +23,11 @@ public class CustomerService {
         return repository.findAll();
     }
 
+public List<Customer> findAllSorted()
+{
+    return repository.findSortedByLastName();
+}
+
     public void saveCustomer(Customer customer)
     {
         repository.save(customer);

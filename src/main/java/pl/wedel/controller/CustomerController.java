@@ -25,7 +25,7 @@ public class CustomerController {
 
     @GetMapping("/list")
     public String listCustomers(Model model) {
-        List<Customer> customers = customerService.findAll();
+        List<Customer> customers = customerService.findAllSorted();
         System.out.println(customers);
         model.addAttribute("customers", customers);
         return "customers-list";
