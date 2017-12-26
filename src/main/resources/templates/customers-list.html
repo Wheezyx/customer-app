@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>List Customers</title>
+</head>
+<link href="../static/css/style.css"
+      th:href="@{/css/style.css}"
+      rel="stylesheet" type="text/css"  />
+<body>
+<div id="wrapper">
+    <div id="header">
+        <h2> Customer Relationship Manager</h2>
+    </div>
+</div>
+
+<div id="container">
+
+    <div id="content">
+
+        <!-- output here-->
+        <div th:if="not ${customers.isEmpty()}">
+            <table>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                </tr>
+                <tr th:each="customer: ${customers}" th:object="${customer}">
+                    <td th:text="*{firstName}"></td>
+                    <td th:text="*{lastName}"></td>
+                    <td th:text="*{email}"></td>
+                </tr>
+            </table>
+        </div>
+        <div th:if="${customers.isEmpty()}">
+            <h1>There is no data yet :(</h1>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
