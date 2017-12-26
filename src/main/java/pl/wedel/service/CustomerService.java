@@ -18,18 +18,15 @@ public class CustomerService {
         this.repository = repository;
     }
 
-    public List<Customer> findAll()
-    {
-        return repository.findAll();
+    public List<Customer> findAllSorted() {
+        return repository.findSortedByLastName();
+    }
+    public void saveCustomer(Customer customer) {
+        repository.save(customer);
     }
 
-public List<Customer> findAllSorted()
-{
-    return repository.findSortedByLastName();
-}
-
-    public void saveCustomer(Customer customer)
+    public Customer findById(Long id)
     {
-        repository.save(customer);
+        return repository.findOne(id);
     }
 }

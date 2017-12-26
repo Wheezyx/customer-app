@@ -3,10 +3,7 @@ package pl.wedel.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.wedel.model.Customer;
 import pl.wedel.service.CustomerService;
 
@@ -26,7 +23,6 @@ public class CustomerController {
     @GetMapping("/list")
     public String listCustomers(Model model) {
         List<Customer> customers = customerService.findAllSorted();
-        System.out.println(customers);
         model.addAttribute("customers", customers);
         return "customers-list";
     }
@@ -40,7 +36,14 @@ public class CustomerController {
     @PostMapping("/saveCustomer")
     public String saveCustomer(@ModelAttribute("customer") Customer tempCustomer)
     {
+        System.out.println(tempCustomer);
         customerService.saveCustomer(tempCustomer);
         return "redirect:/customer/list";
+    }
+    @GetMapping(value = "/addCustomer", params = "id")
+    public String showCustomerForm(@RequestParam("id") Long id, Model model){
+        Customer customer = customerService.findById(id);
+        model.addAttribute("customer",customer);
+        return "customer-form";
     }
 }

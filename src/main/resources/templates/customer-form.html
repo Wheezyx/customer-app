@@ -21,6 +21,7 @@
 </div>
 
 <form action="#" method="post" th:action="@{saveCustomer}" th:object="${customer}">
+    <input type="hidden" th:value="*{id}" th:attr="name='id'" />
     <p>First name: <input type="text" th:field="*{firstName}" required="required"/></p>
     <p>Last name: <input type="text" th:field="*{lastName}" required="required"/></p>
     <p>Email: <input type="email" th:field="*{email}" required="required"/></p>

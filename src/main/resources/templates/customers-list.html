@@ -34,6 +34,10 @@
                     <td th:text="*{firstName}"></td>
                     <td th:text="*{lastName}"></td>
                     <td th:text="*{email}"></td>
+
+                    <td>
+                        <a th:href="@{/customer/addCustomer(id=*{id})}">Update</a>
+                    </td>
                 </tr>
             </table>
         </div>
