@@ -26,13 +26,18 @@ public class CustomerService {
         repository.save(customer);
     }
 
-    public Customer findById(Long id)
-    {
+    public Customer findById(Long id) {
         return repository.findOne(id);
     }
 
-    public void deleteCustomer(Long id)
-    {
+    public void deleteCustomer(Long id) {
         repository.delete(id);
+    }
+
+    public List<Customer> findAllByName(String name) {
+        List<Customer> customers = null;
+        if (name != null || name.length() > 0)
+            customers = repository.findAllByFirstNameOrLastNameOrderByLastName(name,name);
+        return customers;
     }
 }

@@ -14,4 +14,5 @@ public interface CustomerRepository extends JpaRepository<Customer,Long> {
     @Query("SELECT c FROM Customer c ORDER BY c.lastName")
     List<Customer> findSortedByLastName();
 
+    List<Customer> findAllByFirstNameOrLastNameOrderByLastName(String firstName, String lastName);
 }

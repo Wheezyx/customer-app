@@ -6,7 +6,7 @@
 </head>
 <link href="../static/css/style.css"
       th:href="@{/css/style.css}"
-      rel="stylesheet" type="text/css"  />
+      rel="stylesheet" type="text/css"/>
 <body>
 <div id="wrapper">
     <div id="header">
@@ -17,11 +17,16 @@
 <div id="container">
 
     <div id="content">
-
-        <input type="button" value="addCustomer"
+        <input type="button" value="Add customer"
                onclick="window.location.href='addCustomer'"
+               class="button add-button"/>
+        <form action="#" method="post" th:action="@{search}">
+            Search <input type="text" name="searchName"/>
+            <input type="submit" value="Search" class="add-button"/>
+        </form>
+        <input type="button" value="Reset"
+               onclick="window.location.href='list'"
                class="add-button"/>
-
         <!-- output here-->
         <div th:if="not ${customers.isEmpty()}">
             <table>
@@ -39,7 +44,8 @@
                     <td>
                         <a th:href="@{/customer/addCustomer(id=*{id})}">Update</a>
 
-                        <a th:href="@{/customer/delete(id=*{id})}" onclick="if (!(confirm('Are you sure?'))) return false">| Delete</a>
+                        <a th:href="@{/customer/delete(id=*{id})}"
+                           onclick="if (!(confirm('Are you sure?'))) return false">| Delete</a>
                     </td>
                 </tr>
             </table>

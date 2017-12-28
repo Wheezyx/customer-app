@@ -28,29 +28,37 @@ public class CustomerController {
     }
 
     @GetMapping("/addCustomer")
-    public String showCustomerForm(Model model)
-    {
+    public String showCustomerForm(Model model) {
         model.addAttribute("customer", new Customer());
         return "customer-form";
     }
 
     @PostMapping("/saveCustomer")
-    public String saveCustomer(@ModelAttribute("customer") Customer tempCustomer)
-    {
+    public String saveCustomer(@ModelAttribute("customer") Customer tempCustomer) {
         System.out.println(tempCustomer);
         customerService.saveCustomer(tempCustomer);
         return "redirect:/customer/list";
     }
+
     @GetMapping(value = "/addCustomer", params = "id")
-    public String showCustomerForm(@RequestParam("id") Long id, Model model){
+    public String showCustomerForm(@RequestParam("id") Long id, Model model) {
         Customer customer = customerService.findById(id);
-        model.addAttribute("customer",customer);
+        model.addAttribute("customer", customer);
         return "customer-form";
     }
 
     @GetMapping(value = "/delete", params = "id")
-    public String deleteCustomer(@RequestParam("id") Long id){
+    public String deleteCustomer(@RequestParam("id") Long id) {
         customerService.deleteCustomer(id);
         return "redirect:/customer/list";
     }
+
+    @PostMapping("/search")
+    public String searchCustomers(@RequestParam("searchName") String searchName, Model model) {
+        List<Customer> selectedCustomers = customerService.findAllByName(searchName);
+        model.addAttribute("customers", selectedCustomers);
+
+        return "customers-list";
+    }
+
 }
