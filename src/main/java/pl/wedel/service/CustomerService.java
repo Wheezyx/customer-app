@@ -21,6 +21,7 @@ public class CustomerService {
     public List<Customer> findAllSorted() {
         return repository.findSortedByLastName();
     }
+
     public void saveCustomer(Customer customer) {
         repository.save(customer);
     }
@@ -28,5 +29,10 @@ public class CustomerService {
     public Customer findById(Long id)
     {
         return repository.findOne(id);
+    }
+
+    public void deleteCustomer(Long id)
+    {
+        repository.delete(id);
     }
 }

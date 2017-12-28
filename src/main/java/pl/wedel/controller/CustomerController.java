@@ -26,6 +26,7 @@ public class CustomerController {
         model.addAttribute("customers", customers);
         return "customers-list";
     }
+
     @GetMapping("/addCustomer")
     public String showCustomerForm(Model model)
     {
@@ -45,5 +46,11 @@ public class CustomerController {
         Customer customer = customerService.findById(id);
         model.addAttribute("customer",customer);
         return "customer-form";
+    }
+
+    @GetMapping(value = "/delete", params = "id")
+    public String deleteCustomer(@RequestParam("id") Long id){
+        customerService.deleteCustomer(id);
+        return "redirect:/customer/list";
     }
 }
