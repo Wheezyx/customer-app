@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  budowanie_super_aplikacji_wow:
     docker:
     - image: circleci/openjdk:8u171-jdk
       environment:
@@ -49,10 +49,14 @@ workflows:
   version: 2
   build-deploy:
     jobs:
-    - build
+    - budowanie_super_aplikacji_wow
+    - hold:
+        type: approval
+        requires:
+        - budowanie_super_aplikacji_wow
     - deploy:
         requires:
-        - build
+        - hold
         filters:
           branches:
             only: master
