@@ -14,12 +14,6 @@ jobs:
         POSTGRES_USER: root
         POSTGRES_DB: testdb
 
-    - image: brandembassy/rabbitmq:latest
-        environment:
-        ports:
-        - "15672:15672"
-        - "5672:5672"
-
     working_directory: ~/customer-app
 
 
