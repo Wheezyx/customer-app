@@ -4,10 +4,21 @@ jobs:
     docker:
     - image: circleci/openjdk:8u171-jdk
       environment:
-        JDBC_DATABASE_URL: jdbc:postgresql://127.0.0.1:5432/circle_test
+        JDBC_DATABASE_URL: jdbc:postgresql://127.0.0.1:5432/testdb
         JDBC_DATABASE_USERNAME: root
         JDBC_DATABASE_PASSWORD: root
+
     - image: circleci/postgres:9.6.5-alpine-ram
+      environment:
+        POSTGRES_PASSWORD: root
+        POSTGRES_USER: root
+        POSTGRES_DB: testdb
+
+    - image: brandembassy/rabbitmq:latest
+        environment:
+        ports:
+        - "15672:15672"
+        - "5672:5672"
 
     working_directory: ~/customer-app
 
