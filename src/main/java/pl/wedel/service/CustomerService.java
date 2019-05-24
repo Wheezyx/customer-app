@@ -38,6 +38,7 @@ public class CustomerService {
         List<Customer> customers = null;
         if (name != null || name.length() > 0)
             customers = repository.findAllByFirstNameOrLastNameOrderByLastName(name,name);
+        
         return customers;
     }
 }
