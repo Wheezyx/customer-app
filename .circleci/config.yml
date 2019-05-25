@@ -46,7 +46,7 @@ jobs:
     working_directory: ~/customer-app
     steps:
       - attach_workspace:
-          at: ~/target
+          at: /customer-app/target
       - run: ls
       - run: ls target
 
