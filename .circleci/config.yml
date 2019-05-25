@@ -43,7 +43,7 @@ jobs:
     - image: buildpack-deps:trusty
     steps:
       - attach_workspace:
-          at: /target
+          at: ~/target
       - run: ls
       - run: ls target
 
