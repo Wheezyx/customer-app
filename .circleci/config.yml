@@ -32,9 +32,10 @@ jobs:
         - ~/.m2
         key: v1-dependencies-{{ checksum "pom.xml" }}
 
-    - run: mvn clean install
+    - run: mvn package
+    - run: ls
     - persist_to_workspace:
-        root: /customer-app/target
+        root: /target
         paths:
           - customer-app-0.0.1-SNAPSHOT.jar
 
