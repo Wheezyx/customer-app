@@ -42,6 +42,8 @@ jobs:
   deploy:
     docker:
     - image: buildpack-deps:trusty
+
+    working_directory: ~/customer-app
     steps:
       - attach_workspace:
           at: ~/target
