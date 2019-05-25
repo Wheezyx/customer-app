@@ -33,18 +33,13 @@ jobs:
         key: v1-dependencies-{{ checksum "pom.xml" }}
 
     - run: mvn clean install
-    - persist_to_workspace:
-        root: target
-        paths:
-          - customer-app-0.0.1-SNAPSHOT.jar
+    - store_artifacts:
+        path: ~/customer-app/target/customer-app-0.0.1-SNAPSHOT.jar
 
   deploy:
     docker:
     - image: buildpack-deps:trusty
     steps:
-    - checkout
-    - attach_workspace:
-        at: ~/customer-app/target
     - run: ls
 
 
