@@ -27,6 +27,6 @@ public class CustomerRepositoryIntegrationTest
         
         Customer customer = customerRepository.findOne(1L);
     
-        Assert.assertNotNull(customer);
+        Assert.assertNull(customer);
     }
 }
