@@ -14,12 +14,11 @@ jobs:
         POSTGRES_PASSWORD: root
         POSTGRES_USER: root
         POSTGRES_DB: testdb
+
+    - image: rabbitmq:3.6-management-alpine
       ports:
       - "15672:15672"
       - "5672:5672"
-
-    - image: rabbitmq:3.6-management-alpine
-      environment:
 
 
     working_directory: ~/customer-app
