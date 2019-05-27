@@ -16,12 +16,12 @@ public class RabbitMQConnectionIntegrationTest
     private RabbitTemplate rabbitTemplate;
     
     @Test
-    public void name()
+    public void name() throws InterruptedException
     {
         String message = "test";
         
         rabbitTemplate.convertAndSend("queue", message);
-        
+        Thread.sleep(500);
         Object receivedMessage = rabbitTemplate.receiveAndConvert("queue");
         
         Assert.assertEquals(receivedMessage, message);

@@ -14,7 +14,7 @@ public class HomeController {
     @GetMapping("/")
     public String home()
     {
-        rabbitTemplate.convertAndSend("TEST");
+        rabbitTemplate.convertAndSend("queue", "TEST");
         return "index";
     }
 }

@@ -22,7 +22,6 @@ public class CustomerAppApplication {
 		{
 			uri = "amqp://guest:guest@localhost";
 		}
-		
 		cachingConnectionFactory.setUri(uri);
 		return cachingConnectionFactory;
 	}
