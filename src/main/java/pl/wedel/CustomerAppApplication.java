@@ -1,6 +1,8 @@
 package pl.wedel;
 
+import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
+import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -23,6 +25,10 @@ public class CustomerAppApplication {
 			uri = "amqp://guest:guest@localhost";
 		}
 		cachingConnectionFactory.setUri(uri);
+        
+        RabbitAdmin admin = new RabbitAdmin(cachingConnectionFactory);
+        Queue queue = new Queue("queue");
+        admin.declareQueue(queue);
 		return cachingConnectionFactory;
 	}
 	
